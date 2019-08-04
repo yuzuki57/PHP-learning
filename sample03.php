@@ -25,11 +25,11 @@ function PointCalculator()
         $s = trim(fgets(STDIN));
 
         $s = explode(" ", $s);
-        if (strtotime($s[0]) === strtotime($MonthFastday)) {
+        if (preg_match($MonthFastday, $s[0])) {
             $point += floor($s[1] * $HighPointCount);
-        } elseif (strtotime($s[0]) === strtotime($Month5_multiple)) {
+        } elseif (preg_match($Month5_multiple, $s[0])) {
             $point += floor($s[1] * $NearPointCount);
-        } elseif (strtotime($s[0]) === strtotime($Month3_multiple) || strtotime($s[0]) === strtotime($Month_last_day)) {
+        } elseif (preg_match($Month3_multiple, $s[0]) || preg_match($Month_last_day, $s[0])) {
             $point += floor($s[1] * $lowPointCount);
         } else {
             $point += floor($s[1] * $LowestPointCount);
