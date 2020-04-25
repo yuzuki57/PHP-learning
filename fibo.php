@@ -12,16 +12,19 @@ if (is_numeric($a)) {
      * @param  [type] $args
      * @return void
      */
-    function factorial($args)
+    function fibo($args)
     {
-        if ($args > 0) {
-            return $args * factorial($args - 1);
-        }
+    	if ($args == 0) {
+    		return 0;
+    	}
+    	if ($args == 1) {
+    		return 1;
+    	}
 
-        return 1;
+        return fibo($args - 1) + fibo($args - 2)
     }
 
-    echo factorial($a);
+    echo fibo($a);
 } else {
     echo "数値を入力してください\n";
 }
